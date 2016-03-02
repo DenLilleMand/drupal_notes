@@ -1,0 +1,28 @@
+Drush commands:
+
+drush dl drupal
+
+Stock module for e-commerce site:
+drush en commerce_stock
+
+
+cd drupal-7.9/ 
+
+hvis man skal skifte database:
+drush si -y --db-url=mysql://root:root@localhost/drupal_module_dev
+
+si staar for site install
+
+
+drush uli   - makes it possible to reset the password for the site.
+
+
+
+Skulle installere oauth modulet:
+drush dl oauth -y
+
+and then enableing it, which is possible through drush aswell obv.
+drush en oauth -y
+
+
+

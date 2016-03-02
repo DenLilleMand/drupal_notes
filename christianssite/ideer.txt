@@ -1,0 +1,17 @@
+Blocks: 
+	1. flex slider (overvej css design af den, kan maaske kigge rundt paa alternativer), maaske er det paenere at den fylder hele skaermen.
+	2. Uforpligtende tilbud blok, form til at indtaste problem + ens telefon nummer
+	3. Kontakt blok (billed + email + telefon nummer )
+	4. Footer = cvr, addresse osv. 
+	5. Overveje headeren, baade skrift og design.
+	6.  
+
+
+Header: Firmanavn, murer, vinduespudsning
+Highlighted: Slider
+3 Kategorier  Murer blok, Vinduespudsning blok, kontakt form
+Overvej om det ikke er bedre at lave 1 SPA som linker rundt med hashtags. Kan man jo bare starte med.
+
+Sprogsmaalet er om det giver mening overhovedt at bruge drupals form api, det virker meget lettere bare at bruge en twig template 
+og sende det med ajax kald :) :) Men det giver bare mere mening at lave det ordentligt med drupal? css er vel bare css, 
+maa lige fixe. Kan jo faktisk sagtens saette 2 blocks output i samme content omraade.  det er self det der skal til.

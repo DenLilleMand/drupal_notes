@@ -1,0 +1,45 @@
+opgaver for idag er:
+
+
+1. Lav URL aliasas om til noget der giver mening.(Virker kun til at vi kan aendre de overordnede vaerdier, og ikke den maade hvorpaa vi returnere alle products. saa folk maa lidt
+fatte systemet i vores API som enlig ikke er saerlig svaer at forstaa.)
+
+2. Dokumenter opret Product metoden.  (done.)
+
+3. Implementer det i det rigtige DLF projekt på git. 
+
+4. Test det der med at tilføje et custom felt til databasen, og så
+se om apien stadig kan finde ud af det.   Man skal gå ind og oprette et felt først, Store --> Product -- > product types -->
+manage fields --> add whatever custom field you want, the machine readable name can now be used in the JSON data as a field, 
+and it will be automatically returned when you retrieve products, even if you retrieve products that was made before you added the custom field.
+i have yet to find the actual field in my database, but it's being saved.  (done).  ?? what about if they want a foreign key to some other table or smt. that might 
+pose difficulty. 
+
+
+5.Kigge nærmere på sikkerheden i APIen, authentication
+osv.  Vi skal bare kunne logge ind,  kalde resten af kaldne med
+det session id vi har faaet. og saa kunne logge ud bagefter. Burde faktisk lave en unit test for sig selv, der tager sig af dette.
+
+Guide url:https://www.drupal.org/node/1827698.
+Okay, saa vi bruger 2 legged OAUTH authentication, efter man har sat OAuth authentication op til services ved at installere det:
+'drush dl oauth -y' samt enable modulerne,  disse moduler består af OAuth modulet selvfølgelig, men der bliver også oprettet en blok under moduler som hedder
+"services - oauth authentication", så den skal vi også godkende. Bagefter skal vi gå ind under people --> Edit den user vi har givet til dem der skal kalde vores API,
+saa er der en blok som hedder 'Oauth authorization', her skal vi klikke 'add consumer', hvorefter vi faar muligheden for at tilfoje et navn og et callback url,
+callback url skal kun bruges hvis man har implementeret 3 legged O-Auth. 
+
+
+
+
+6. Kigge på forholdet imellem Product, Order og User, måske gøre
+sig nogle tanker om hvordan de her 3 entitier spiller sammen. 
+Kan evt. læse alt materialet igennem for opgaven.
+
+7. undersøge hvordan man kan tilføje mere end 1 product og user afgangen, dette er specielt vigtigt for Users.
+
+
+8. ændre pathen for hjemmesiden til det dansk lærerforenings hjemmeside hedder.  dvs. at  drupal-7.34 skal ændres til  http://dansklf.dk/
+er det her en prioritering??? Det er jo trodsalt kun kodeeksemplerne. 
+
+
+9. As preperation for the future maybe it would be wise to make my own custom service module written in php using this tutorial: 
+http://pingv.com/blog/an-introduction-drupal-7-restful-services

@@ -1,0 +1,83 @@
+Best Practices:
+
+
+
+Hooks:
+• Generic hooks, which allow modules to define additions to Drupal behavior.
+• Alter hooks, which allow modules to make modifications to existing Drupal
+behavior.
+• Theme hooks, which allow themes to modify the output that is sent to the browser.
+• Theme hooks come with theme preprocessing and processing hooks, which modules
+can use to alter the information that is sent to the theme for output.
+
+Hvordan man overrider en theme hook:
+To override a theme hook template file, copy the template file you are overriding to
+your theme directory, keeping the same file name.
+7. Edit the function or file to make the desired changes.
+8. Enable your module or theme.
+
+
+Hver gang man tilføjer en ny hook eller overrider noget,
+så skal man slette Drupals cache, for at ændringerne tager effekt.
+
+
+Mhs. til at override ting, så kan vi også override outputtet af html,
+det kan vi bla gøre sådan her:
+whenever a block from the core Block module is rendered, a call is made to
+theme('block', $block_data) , rather than having the Block module simply output
+an HTML <div> containing the data. This allows your theme to override the default
+block.tpl.php theme template file, replacing the default <div> with different HTML if
+desired.
+
+Det er nok noget man lige skal prøve, men det virker do-able.
+
+
+1. See if there is already a theme hook for the type of output you are generating. For
+instance, if you are generating an HTML table, you should use the Drupal core
+'table' theme hook instead of defining your own hook.
+2. If there is not already an appropriate theme hook, define a custom theme hook by
+implementing hook_theme() in your mymodule.module file. Example:
+function mymodule_theme($existing, $type, $theme, $path) {
+return array(
+// The array keys are names of the theme hooks you are defining.
+'mymodule_hookname' => array(
+// Input variables.
+'variables' => array(
+// These are passed as an array to theme(), which passes them on
+// to your theme function or template. Here, provide default values.
+'input1' => '',
+),
+// If you want to use a template, include this line; for a theme
+// function, leave it out.
+'template' => 'mymodule-hookname',
+),
+);
+}
+
+3. Define a default implementation of your theme hook in your module. If your theme
+hook is named 'mymodule_hookname' , this is either a theme function called
+theme_mymymodule_hookname() , or a theme template file called mymodule-
+hookname.tpl.php. Template files are generally preferred to theme functions. Tem‐
+plate files should print the data in appropriate HTML markup; theme functions
+should compose a string containing the data and HTML markup and return that.
+For example:
+// Sample theme function.
+function theme_mymodule_hookname($variables) {
+return '<div>' . $variables['input1'] . '</div>';
+}
+// Same output as a theme template file.
+<div><?php print $input1; ?></div>
+
+4. If you are using a theme template, declare it in your mymodule.info file with a
+files[] = mymodule-hookname.tpl.php line.
+5. Try to keep the programming in your theme function or template file to a minimum
+—it should just be putting the output inside some HTML markup. Any
+programming logic should instead be put into a function called
+template_preprocess_mymodule_hookname() , defined in your mymodule.mod‐
+ule file. This function will automatically be called to preprocess the input data into
+the variables that can be printed by the template file.
+6. Call theme('mymodule_hookname', $data) directly in your module to render the
+data. Or, create a render array that refers to your theme hook.
+
+
+

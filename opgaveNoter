@@ -1,0 +1,34 @@
+Min hook skal kunne tage imod vilkårligt mange user Objekter, jeg er selv med til at definere 
+hvilke attributter de her user objekter skal have. 
+
+så jeg tænker at APIen skal bruge:
+
+addCustomer(object)
+{
+ object der indeholder getters for alle attributter og bliver lagt i JSON format.
+	
+}
+
+Lave en funktion der ud laver user objekter ud fra et loop.
+
+
+Virker til at man har det der Array, som fortæller drupal hvad ens side skal gøre,
+som er vores hook.   Den har en url path, når man rammer den så bliver vores  callBackPage rendered, 
+Og det kan blot være en form som vi returnere, men det virker som om at det også kan være alt muligt andet,
+en hel html side med css / javascript osv... så vi kan måske lige kigge på nogle af de andre moduler, måske downloade lidt af hvert.
+
+Kan lige læse kravs specifikationen,.
+
+
+hmm ... så måske når man rammer vores hook, mit module er ligesom indgangen til alle de andre 
+APIS der har med update/create user at gøre. 
+så for hver af dem her, burde vi lave en ny.   addUsers kan både tage sig af vores update/create fordi
+vi kan tjekke databasen op imod om personen allerede eksisterer, og dermed giver det mening at opdatere personen,
+
+Men hvordan kan vi lave funktionen så vi også tager imod at slette users... det kræver nærmest at useren har en attribut der hedder ¨command¨.
+
+men man skal kunne komme ind til vores hook via  /dlf-api/   og derfra 
+
+
+OBS skal huske at declarer i files når man tilføjer ting udenfor .module filen.  
+

@@ -1,0 +1,21 @@
+
+
+If you are using the latest version of CKEditor, which is version 4, you need to edit the WYSIWYG module of Drupal. The module verifies the editor version using a regular expression which doesn't match with version definition (in javascript) of CKEditor.
+
+You need to modify the wysiwyg/editors/ckeditor.inc file from line 77 to 88 (basically the while loop) with this modified code:
+
+while ($max_lines && $line = fgets($library, 500)) {
+  // version:'CKEditor 3.0 SVN',revision:'3665'
+  // version:'3.0 RC',revision:'3753'
+  // version:'3.0.1',revision:'4391'
+  if (preg_match('@version:\"(?:CKEditor )?([\d\.]+)(?:.+revision:\"([\d]+))?@', $line, $version)) {
+    fclose($library);
+    // Version numbers need to have three parts since 3.0.1.
+    $version[1] = preg_replace('/^(\d+)\.(\d+)$/', '${1}.${2}.0', $version[1]);
+    return $version[1] . ((isset($version[2])) ? '.' . $version[2] : '');
+  }
+  $max_lines--;
+}
+
+Single quotes has been changed to double quotes in regular expression + the return value adds an extra isset condition.
+

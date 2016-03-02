@@ -1,0 +1,68 @@
+For at installere et subtheme(Åbenbart må man ikke bare installere
+et theme i drupal, man skal lave et subtheme fra et rigtigt theme). 
+først rettigheder:
+sudo chmod 777 /home/denlillemand/.drush/cache
+sudo chmod 777 /var/www/html/dittesmovies/sites
+ændre rettighederne til themes mappen, den er normalt låst:
+sudo chown $USER -R /var/www/html/dittesmovies/sites/all/themes/
+
+og så:
+drush dl bootstrap
+
+gå ind i themes/bootstrap  mappen --> find bootstrap_subtheme mappen, og flyt den 1 directory op til themes mappen.
+gå så ind i bootstrap_subtheme mappen, og rename bootstrap_subtheme.info.starterkit til  bootstrap_subtheme.info 
+
+nu ville man så kunne enten enable/sætte det default igennem drush, eller bare gå ind på siden og enable/set default under appearance.
+
+
+
+fordi jeg har fulgt den her tutorial en smule:https://www.gaslampmedia.com/tutorial-drupal-bootstrap-subtheme-less/ 
+
+
+skal man have less. Det bedste er at skaffe det igennem npm sådan her(http://www.onurguzel.com/install-less-on-ubuntu-with-npm/):
+npm --version
+sudo npm install -g less
+
+for at tjekke om man har installeret less ordentligt kører man:
+which lessc
+lessc -v
+
+og det har et eller andet med Node at gøre. 
+
+
+Clear cache med drush, efter man har compiled css osv. 
+drush cache-clear all
+
+
+Jeg kan ikke helt finde ud af om man skal compile ens less filer manuelt hver gang, hvis jeg nu laver nogle less filer selv. eller om man kan
+sætte noget automation op.(Burde man selvfølgelig kunne, ellers kunne jeg prøve at lave en bash script der gør det, det kunne være lidt sjovt. og så måske endda
+sætte bashscriptet til en hotkey :))
+
+
+Jeg tænker om det er den her css mappe alt ens css bliver loaded fra. kan jo prøve at ændre noget.
+
+
+For at få ens css med fulgte jeg den her tutorial:https://www.drupal.org/node/171209
+
+inde i ens subtheme/css  folder kan man tilføje sine css filer, men man skal også gå ind i   bootstrap_subtheme.info filen, og så tilføje 
+ens fil til et array.  indtil videre har jeg kun fået den css fil til at virke som lå i [all][]  arrayed.  efter man har lavet filen, tilføjet styles
+og tilføjet den i info filen, så skal man clear sin cache med drush som nævnt ovenfor. hvorefter man kan refresh siden,
+dette er bla. hvorfor man bruger ting som magiCSS
+
+Har lavet et repository: https://github.com/DenLilleMand/drupal-bootstrap-subthemed 
+til den her skabelon.
+
+ saa burde tilfoje et nyt repository til mit projekt.
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+In database open config table, find core.extension, open the data blok in a editor, find the module and delete it.
+
+
+a:2:{s:6:"module";a:47:{s:14:"automated_cron";i:0;s:5:"block";i:0;s:13:"block_content";i:0;s:10:"breakpoint";i:0;s:9:"christian";i:0;s:8:"ckeditor";i:0;s:5:"color";i:0;s:7:"comment";i:0;s:6:"config";i:0;s:7:"contact";i:0;s:22:"content_entity_contact";i:0;s:10:"contextual";i:0;s:8:"customer";i:0;s:8:"datetime";i:0;s:5:"dblog";i:0;s:18:"dynamic_page_cache";i:0;s:6:"editor";i:0;s:5:"field";i:0;s:8:"field_ui";i:0;s:4:"file";i:0;s:6:"filter";i:0;s:11:"flex_slider";i:0;s:6:"header";i:0;s:4:"help";i:0;s:7:"history";i:0;s:5:"image";i:0;s:4:"link";i:0;s:7:"menu_ui";i:0;s:4:"node";i:0;s:7:"options";i:0;s:10:"page_cache";i:0;s:4:"path";i:0;s:9:"quickedit";i:0;s:3:"rdf";i:0;s:6:"search";i:0;s:8:"shortcut";i:0;s:6:"system";i:0;s:8:"taxonomy";i:0;s:4:"text";i:0;s:7:"toolbar";i:0;s:4:"tour";i:0;s:6:"update";i:0;s:4:"user";i:0;s:8:"views_ui";i:0;s:17:"menu_link_content";i:1;s:5:"views";i:10;s:8:"standard";i:1000;}s:5:"theme";a:5:{s:6:"stable";i:0;s:6:"classy";i:0;s:6:"bartik";i:0;s:5:"seven";i:0;s:7:"awesome";i:0;}}
+
+
+
+And to delete something you delete this part: i:0;s:11:"flex_slider";

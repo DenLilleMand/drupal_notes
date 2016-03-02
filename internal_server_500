@@ -1,0 +1,17 @@
+For at fixe skal vi edit i apache2's php.ini fil. ved at evt. bare søge på computeren efter filen,
+eller find apache2 directory. 
+
+
+cd  /etc/php5/apache2
+
+sudo vim php.ini
+
+tilføj:
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+
+(evt. øverst)
+
+Bagefter genstart apache2 serveren:
+
+sudo /etc/init.d/apache2 restart

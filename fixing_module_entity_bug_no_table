@@ -1,0 +1,5 @@
+drush sql-query "DELETE FROM key_value WHERE name='module_name';"
+
+
+rm -rf modules/your_stubborn_module
+rm -rf sites/default/files/php

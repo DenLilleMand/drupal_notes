@@ -1,0 +1,334 @@
+Opgave til mig: lav en API ¨der udstiller et url(?) - 
+tager imod noget JSON og laver User objekter ud af det ... og det skal ikke sendes direkte ned i databasen,
+har på fornemmelsen at der bliver lavet en addUser funktion for mig ^^ .
+
+Så enlig skal jeg vel bare lave en php klasse, som tager imod et JSON objekt, og som så laver det om til et user objekt derfra.
+
+
+
+
+You can also use this type of comment directly after a line of code to describe its action,
+like this:
+$x += 10; // Increment $x by 10
+When you need multiple-line comments, there’s a second type of comment, which looks
+like Example 3-2.
+Example 3-2. A multiline comment
+<?php
+/* This is a section
+of multiline comments
+which will not be
+interpreted */
+?>
+
+
+
+Semicolons
+You may have noticed in the previous examples that the PHP commands ended with a
+semicolon, like this:
+$x += 10;
+Probably the most common cause of errors you will encounter with PHP is forgetting
+this semicolon. This causes PHP to treat multiple statements like one statement, which
+it is unable to understand, prompting it to produce a Parse error message.
+
+
+
+
+The $ symbol
+The $ symbol has come to be used in many different ways by different programming
+languages. For example, if you have ever written in the BASIC language, you will have
+used the $ to terminate variable names to denote them as strings.
+In PHP, however, you must place a $ in front of all variables. This is required to make
+the PHP parser faster, as it instantly knows whenever it comes across a variable. Whether
+your variables are numbers, strings, or arrays, they should all look something like those
+in Example 3-3.
+Example 3-3. Three different types of variable assignment
+<?php
+$mycounter = 1;
+$mystring = "Hello";
+$myarray = array("One", "Two", "Three");
+?>
+
+En god måde at debugge php på : 
+echo "This is line " . __LINE__ . " of file " . __FILE__;
+
+Here’s an example to output whether the value of a variable is TRUE or FALSE
+using print, something you could not perform in the same manner with echo, because
+it would display a Parse error message:
+$b ? print "TRUE" : print "FALSE";
+
+
+Variable scope virker ligesom i java hvor parametre bliver locale variable + de variabler vi declare inde i funktionen:
+<?php
+function longdate($timestamp)
+{
+$temp = date("l F jS Y", $timestamp);
+return "The date is $temp";
+
+f.eks vil det følgende fejle:
+<?php
+$temp = "The date is ";
+echo longdate(time());
+function longdate($timestamp)
+{
+return $temp . date("l F jS Y", $timestamp);
+}
+?>
+
+fix:
+<?php
+$temp = "The date is ";
+echo $temp . longdate(time());
+function longdate($timestamp)
+{
+return date("l F jS Y", $timestamp);
+}
+?>
+
+
+Declare en global variable:
+global $is_logged_in;
+
+You should use global variables with caution, though. I recommend that you create them
+only when you absolutely cannot find another way of achieving the result you desire.
+In general, programs that are broken into small parts and segregated data are less buggy
+and easier to maintain. If you have a thousand-line program (and some day you will)
+
+
+Interessersant tip(tydeligvis totalt op til en selv):
+Sometimes I adopt the convention of making all global variable names
+uppercase (just as it’s recommended that constants should be uppercase)
+so that I can see at a glance the scope of a variable.
+
+Statiske variabler:
+(Noget som faktisk er super interessersant som jeg ikke har tænkt over at tjekke med java:
+The next time the function is called, because $count has already been declared, the first
+line of the function is skipped. Then the previously incremented value of $count is
+displayed before the variable is again incremented.)
+
+<?php
+function test()
+{
+static $count = 0;
+echo $count;
+$count++;
+}
+?>
+
+Ligesom den klassiske måde vi kunne bruge det på i java, Men her kan man declare en statisk variable inde i en function() hvilket
+virker lidt imod det som vi gjore i java.
+
+der er åbenbart flere regler mhs. til statiske variabler:
+
+<?php
+static $int = 0; // Allowed
+static $int = 1+2; // Disallowed (will produce a Parse error)
+static $int = sqrt(144); // Disallowed
+?>
+
+Super global variables:
+
+
+Superglobal variables
+Starting with PHP 4.1.0, several predefined variables are available. These are known as
+superglobal variables, which means that they are provided by the PHP environment but
+are global within the program, accessible absolutely everywhere.
+These superglobals contain lots of useful information about the currently running program
+and its environment (see Table 3-6). They are structured as associative arrays, a
+topic discussed in Chapter 6.
+Table 3-6. PHP’s superglobal variables
+Superglobal name Contents
+$GLOBALS All variables that are currently defined in the global scope of the script. The variable names are the keys
+of the array.
+$_SERVER Information such as headers, paths, and script locations. The entries in this array are created by the web
+server, and there is no guarantee that every web server will provide any or all of these.
+$_GET Variables passed to the current script via the HTTP GET method.
+$_POST Variables passed to the current script via the HTTP POST method.
+$_FILES Items uploaded to the current script via the HTTP POST method.
+$_COOKIE Variables passed to the current script via HTTP cookies.
+$_SESSION Session variables available to the current script.
+$_REQUEST Contents of information passed from the browser; by default, $_GET, $_POST, and $_COOKIE.
+$_ENV Variables passed to the current script via the environment method.
+
+}
+?>
+
+All of the superglobals (except for $GLOBALS) are named with a single initial underscore
+and only capital letters; therefore, you should avoid naming your own variables in this
+manner to avoid potential confusion
+
+
+To illustrate how you use them, let’s look at a bit of information that many sites employ.
+Among the many nuggets of information supplied by superglobal variables is the URL
+of the page that referred the user to the current web page. This referring page information
+can be accessed like this:
+$came_from = $_SERVER['HTTP_REFERER'];
+
+
+Superglobals and security
+A word of caution is in order before you start using superglobal variables, because they
+are often used by hackers trying to find exploits to break into your website. What they
+do is load up $_POST, $_GET, or other superglobals with malicious code, such as Unix
+or MySQL commands that can damage or display sensitive data if you naïvely access
+them.
+Therefore, you should always sanitize superglobals before using them. One way to do
+this is via the PHP htmlentities function. It converts all characters into HTML entities.
+For example, less-than and greater-than characters (< and >) are transformed into the
+strings &lt; and &gt; so that they are rendered harmless, as are all quotes and backslashes,
+and so on.
+Therefore, a much better way to access $_SERVER (and other superglobals) is:
+
+$came_from = htmlentities($_SERVER['HTTP_REFERER']);
+
+
+Example 4-1. Four simple Boolean expressions
+<?php
+echo "a: [" . (20 > 9) . "]<br>";
+echo "b: [" . (5 == 6) . "]<br>";
+echo "c: [" . (1 == 0) . "]<br>";
+echo "d: [" . (1 == 1) . "]<br>";
+?>
+
+åbenbart bliver outputet af TRUE/FALSE oversat til  1/0 .. så det er lidt javascript agtigt.
+
+Example 4-2. Outputting the values of TRUE and FALSE
+<?php // test2.php
+echo "a: [" . TRUE . "]<br>";
+echo "b: [" . FALSE . "]<br>";
+?>
+
+Literals and Variables
+The simplest form of an expression is a literal, which simply means something that
+evaluates to itself, such as the number 73 or the string "Hello".
+
+taget med fordi de beskriver hvad et literal er.. men nu er det forvirrende at "Hello" og `hello` er det samme. 
+
+Example 4-3. Literals and variables
+<?php
+$myname = "Brian";
+$myage = 37;
+echo "a: " . 73 . "<br>"; // Numeric literal
+echo "b: " . "Hello" . "<br>"; // String literal
+echo "c: " . FALSE . "<br>"; // Constant literal
+echo "d: " . $myname . "<br>"; // String variable
+echo "e: " . $myage . "<br>"; // Numeric variable
+?>
+
+And, as you’d expect, you see a return value from all of these with the exception of c:,
+which evaluates to FALSE, returning nothing in the following output:
+a: 73
+b: Hello
+c:
+d: Brian
+e: 37
+
+Så det at FALSE ikke bliver skrevet ud, må betyde at der er forskel på 
+echo "c: [" . (1 == 0) . "]<br>";  og bare at skrive FALSE ud direkte som en konstant, og det må være fordi det er en constant literal,
+imens det andet er en variable. 
+
+
+Example 4-4. An expression and a statement
+<?php
+$days_to_new_year = 366 - $day_number; // Expression
+if ($days_to_new_year < 30)
+{
+echo "Not long now till new year"; // Statement
+}
+?>
+
+
+Operators
+PHP offers a lot of powerful operators that range from arithmetic, string, and logical
+operators to assignment, comparison, and more (see Table 4-1).
+Table 4-1. PHP operator types
+Operator |   Description    |    Example
+Arithmetic Basic mathematics $a + $b
+Array Array union $a + $b
+Assignment Assign values $a = $b + 23
+Bitwise Manipulate bits within bytes 12 ^ 9
+Comparison Compare two values $a < $b
+Execution Executes contents of back ticks `ls -al`
+Increment/decrement Add or subtract 1 $a++
+Logical Boolean $a and $b
+String Concatenation $a . $b
+
+
+
+Each operator takes a different number of operands:
+• Unary operators, such as incrementing ($a++) or negation (-$a), which take a single
+operand.
+• Binary operators, which represent the bulk of PHP operators, including addition,
+subtraction, multiplication, and division.
+• One ternary operator, which takes the form ? x : y. It’s a terse, single-line if
+statement that chooses between two expressions, depending on the result of a third
+one.
+
+Det her var faktisk lidt det jeg tænkte:
+For example, any strings composed entirely of numbers will be converted to numbers
+whenever compared with a number. In Example 4-13, $a and $b are two different strings,
+and we would therefore expect neither of the if statements to output a result.
+Example 4-13. The equality and identity operators
+<?php
+$a = "1000";
+$b = "+1000";
+if ($a == $b) echo "1";
+if ($a === $b) echo "2";
+?>
+
+However, if you run the example, you will see that it outputs the number 1, which means
+that the first if statement evaluated to TRUE. This is because both strings were first
+converted to numbers, and 1000 is the same numerical value as +1000.
+In contrast, the second if statement uses the identity operator—three equals signs in a
+row—which prevents PHP from automatically converting types. $a and $b are therefore
+compared as strings and are now found to be different, so nothing is output.
+
+<?php
+$a = "1000";
+$b = "+1000";
+if ($a != $b) echo "1";
+if ($a !== $b) echo "2";
+?>
+And, as you might expect, the first if statement does not output the number 1, because
+the code is asking whether $a and $b are not equal to each other numerically.
+Instead, it outputs the number 2, because the second if statement is asking whether $a
+and $b are not identical to each other in their present operand types, and the answer is
+TRUE; they are not the same.
+
+Comparison operators
+Using comparison operators, you can test for more than just equality and inequality.
+PHP also gives you > (is greater than), < (is less than), >= (is greater than or equal to),
+and <= (is less than or equal to) to play with. Example 4-15 shows these operators in
+use.
+Example 4-15. The four comparison operators
+<?php
+$a = 2; $b = 3;
+if ($a > $b) echo "$a is greater than $b<br>";
+if ($a < $b) echo "$a is less than $b<br>";
+if ($a >= $b) echo "$a is greater than or equal to $b<br>";
+if ($a <= $b) echo "$a is less than or equal to $b<br>";
+?>
+
+= 
+2 is less than 3
+2 is less than or equal to 3
+
+A statement using the OR operator:
+<?php
+if ($finished == 1 OR getnext() == 1) exit;
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

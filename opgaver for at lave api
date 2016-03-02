@@ -1,0 +1,146 @@
+plan:
+
+drush dl services..
+
+men saa havde jeg ikke restful server enabled, fordi jeg ikke have
+bibliotekerne, og jeg kunne ikke finde den rigtige version, anyway
+services kom med serverne i en pakke, men man skulle stadig enable det og de sagde vi ikke have libraries alligevel .. saa jeg endte op med at skrive 
+drush en rest_server
+
+og saa fik jeg muligheden for at downloade libraries til rest_serveren.
+Libraries er aabenbart bare et modul der hedder libraries, det er jo bare flot . 
+---------------------------------------- 
+
+Okay, så vi kan modtage data nu. Nu er så spørgsmålet hvad vi gerne vil lave med den her data, Det næste skridt - bare for sjov
+ville vel være at hooke ind i kaldet til vores services modul, sådan at vi måske kan redigere i JSON dataen, ligesom et filter.
+Jeg tror gerne at Henrik vil have et interface til dataen hvor man kan manipulere det før man indsætter det. 
+Tror det bedste er lige at prøve alle CRUD funktionaliterne igennem postman, og skriver de forskellige urls ned + regler. 
+Så ved jeg ikke hvor sexet det er, men man burde kigge på noget authentication. 
+
+---------------------------------------- 
+ Så vil vi vel gerne ligge det op på github på en ordentligt måde, der må vi lige læse i den der bog 
+5 ways to become a drupal ninja. github delen af det. Desuden skal vi også lige have renset ud i de der moduler jeg bruger som noter, og de moduler som 
+jeg skal aflevere til Henrik. 
+---------------------------------------- 
+Procedure:
+
+Jeg har downloaded modulerne services & rest_server, samt downloadede drush automatisk nogle dependencies.
+
+Med services oprettede jeg en rest server, med end-point på /rest
+
+Så har jeg brugt Postman addon i Chrome til at teste mit API,
+og det fungere således:
+
+generere en X-CSRF token(Som man nogle gange skal bruge til at proppe i headeren):
+http metode: get
+url: http://localhost/drupal-7.34/services/session/token
+Header: Content-type      application/json
+Header:  Accept   application/json
+
+i mit tilfælde fik jeg returneret: WCcqm5GH-e5LpuaXVZn6nX9j4UfWMCb4PFge4PGn-aQ
+
+Hvilket jeg så kan bruge som 
+
+X-CSRF-Token  WCcqm5GH-e5LpuaXVZn6nX9j4UfWMCb4PFge4PGn-aQ
+
+i headeren til mine andre kald, Det eneste kald der dog havde brug for det her var update metoden.       
+
+
+create(default):
+
+http metode: Post
+url:http://localhost/drupal-7.34/rest/user.json
+
+Header: Content-type  application/json
+Header: Accept	      application/json
+
+Json:
+{
+  	"name":"morten",
+	"pass":"mortenspassword",
+ 	"mail":"morten@hotmail.com"
+}
+ 
+
+Login:
+
+http metode: Post
+
+url: http://localhost/drupal-7.34/rest/user/login.json
+
+Header: Content-type  application/json
+Header: Accept	      application/json
+Json:
+{
+  	"username":"herpderp",
+	"password":"randompassword"
+}
+
+
+retrieve(Hvor vi bruger 4 som userid.):
+
+http metode: Get
+
+url: http://localhost/drupal-7.34/dlfapi/user/4.json
+Header: Content-type  application/json
+Header: Accept	      application/json
+
+
+
+Update: 
+http metode: put
+url: http://localhost/drupal-7.34/dlfapi/user/4.json
+
+Json:
+{
+  "name":"hej",
+  "mail":"New@mail.com"
+}
+
+
+----------------------------------------------------------------------
+Installing drupal commerce:
+
+Når vi kører den første kommando registrerer den at commerce modulet er en dependency,
+så den downloader og installere dette for os. bagefter henter den alle sub modulerne, når vi kører de her kommandoer,
+grunden til at vi har -y er fordi den så bare svarer "y" til  om vi vil fortsætte.
+
+drush en commerce commerce_ui -y;
+drush en commerce_customer commerce_customer_ui -y;
+drush en commerce_price -y;
+drush en commerce_line_item commerce_line_item_ui -y;
+drush en commerce_order commerce_order_ui -y;
+drush en commerce_checkout commerce_payment commerce_product -y;
+drush en commerce_cart commerce_product_pricing -y;
+drush en commerce_product_ui -y;
+drush en commerce_tax_ui -y;
+drush en commerce_payment_ui -y
+
+
+næste skridt er at integrerer Drupal commerce entity integration for services
+sådan at vi kan sende/modtage commerce entitier i JSON format
+
+Documentation: https://www.drupal.org/project/commerce_services
+
+Drush kunne ikke finde "drush install commerce_services",
+men med "drush en commerce_services" kan den ikke finde modulet, men den finder ud af 
+at den mangler at installere commerce_services for at det kan lade sig gøre, så får vi den
+til selv at foreslå at installere modulet dvs.  at det følgende er måden at installere commerce_services på:
+"drush en commerce_services"
+
+
+Order:
+Retrieve:
+Http-metode: Get
+http://localhost/drupal-7.34/dlfapi/order/1.json
+
+
+
+
+
+
+
+
+
+
+

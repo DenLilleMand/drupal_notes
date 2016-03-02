@@ -1,0 +1,17 @@
+For at installere commerce modulet:
+(Husk at stå i drupal mappen)
+
+Når vi kører den første kommando registrerer den at commerce modulet er en dependency,
+så den downloader og installere dette for os. bagefter henter den alle sub modulerne, når vi kører de her kommandoer,
+grunden til at vi har -y er fordi den så bare svarer "y" til  om vi vil fortsætte.
+
+drush en commerce commerce_ui -y;
+drush en commerce_customer commerce_customer_ui -y;
+drush en commerce_price -y;
+drush en commerce_line_item commerce_line_item_ui -y;
+drush en commerce_order commerce_order_ui -y;
+drush en commerce_checkout commerce_payment commerce_product -y;
+drush en commerce_cart commerce_product_pricing -y;
+drush en commerce_product_ui -y;
+drush en commerce_tax_ui -y;
+drush en commerce_payment_ui -y

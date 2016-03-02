@@ -1,0 +1,86 @@
+Sætte en lamp server op: 
+
+Guide:
+https://www.youtube.com/watch?v=WBFqlgt7kuI
+
+husk at flytte phpmyadmin + drupal ind i var/www/html/
+og lad være med at bruge 
+
+nogle hjælpsomme cmds:
+
+sudo ln -s /usr/share/phpmyadmin /var/www/html/
+
+
+sudo apt-get install --reinstall php5-common php5-mysql
+sudo /etc/init.d/apache2 reload
+
+
+sudo chmod -v 755 default/
+
+
+mhs. til clean url:
+    sudo a2enmod rewrite
+    sudo service apache2 restart
+faktisk var det ikke helt det der aktiverede clean url for mig,
+det var nærmere da jeg gik ind i :/etc/apache2/apache2.conf 
+filen, efter at have ændret dens permissions, dvs. sudo gedit apache2.conf - ved ikke helt om man behøver chmod. 
+anyway, jeg har nok åbnent et sikkerheds hul der :) 
+jeg ændrede alle override None   til "Override All" ellers kan man google clean url fixes for drupal 7, der er en comment nederst som fixede det for mig. 
+
+
+Drupal:
+
+Composer:
+php composer.phar
+
+at downloade drush med composer(til drupal 7):
+composer global require drush/drush:6.*
+
+opdatere drush med sig selv:
+sudo drush dl drush --destination='/usr/share'
+
+Hvis man skal uninstall noget fra composer så går man ind i:
+gedit ~/.composer/composer.json
+
+sletter alle tingne der står under require,
+og derefter:
+
+php composer.phar global update
+
+
+DRUSH:
+For f.eks at kalde "drush help --filter=omega" skal man vaere inde 
+i dir  /var/www/html/drupal-7.34/   ellers siger den at den ikke kender
+til noget af det.
+
+
+For at installere et subtheme(Åbenbart må man ikke bare installere
+et theme i drupal, man skal lave et subtheme fra et rigtigt theme). 
+først rettigheder:
+sudo chmod 777 /home/denlillemand/.drush/cache
+og så:
+drush omega-wizard
+
+vigtigste er at vi er i roden af vores projekt, naar
+vi bruger drush.
+
+
+For at installere et modul, f.eks pathauto, 
+så går man igen hen i roden af ens projekt og skriver:
+drush dl pathauto
+
+hvorefter man skal enable det:
+
+drush en -y pathauto   (her betyder -y bare at den kommer til at stille
+dig et spørgsmål om du vil gå videre eller ej, sådan her fortæller man den på forhånd at man har sagt ja).
+
+Man kan jo som regelt enable modules igennem drupal, men her sagde den noget med at token ikke eksisterede, men da jeg enabled det igennem drush downloadede den selv Token, token kom hvertfald frem, og så var det også enabled.
+
+https://www.drupal.org/project/devel
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+vim /etc/php5/apache2/php.ini
+
+make a section for your custom configurations and paste:
+
+ ;regular apache/php debugging options, so it gives more verbose output directly in browser
+ ini_set('display_errors','On');
+ error_reporting(E_ALL | E_STRICT);
+
+ ;Suppose to make xdebug work. 
+ zend_extension="/usr/lib/php5/20110331/xdebug.so"
+ ;Logging all of the communication between xdebug and phpstorm,
+ ;so if you're breakpoints doesn't work, 
+ xdebug.remote_log=~./xdebug.log
+xdebug.remote_enable=1
+xdebug.remote_port=9000
+xdebug.idekey=PHPSTORM
+xdebug.remote_connect_back=1
+
+remember: /etc/init.d/apache2 restart
+
+
+maybe run: sudo apt-get update , if it asks for it.
+ sudo apt-get remove --auto-remove php5-xdebug (if its installed allready, but the wrong version or whatever)
+ sudo apt-get install php5-dev
+ sudo pecl install xdebug
+
+
+if Error: If the command failed with 'phpize: not found' then you need to install php5-dev packageYou can do it by running 'apt-get install php5-dev' as a root userERROR: `phpize' failed
+
+we should've fixed that error by installing the php5-dev,but if you do get the error thats because the php5-dev didn't install correctly, could be because you haven't 
+been doing   'sudo apt-get update' when it asked you to. So try that. Try to install the php5-dev again. And then you can eventually run 'sudo pecl install xdebug' again, which will 
+start where it got stopped by the error last time.
+
+
+If the php --version doesn't show we should:
+ sudo vim /etc/php5/cli/php.ini     
+and then copy the:
+
+ [xdebug]
+ zend_extension=/usr/lib/php5/20131226/xdebug.so
+ xdebug.remote_enable=on
+ xdebug.remote_handler=dbgp
+ xdebug.remote_mode=req
+ xdebug.remote_host=localhost
+ xdebug.remote_port=9000
+
+inside of that file aswell. 
+remember: /etc/init.d/apache2 restart
+
+sudo apt-get install php5-cgi
+
+https://www.jetbrains.com/phpstorm/help/configuring-a-debugging-engine.html
+
+file --> settings --> languages & frameworks  --> PHP --> click the [...] button next to the interpreter field. make sure 
+that the PHP executable points towards the 
+
+
+for that long stacktrace thingy:
+sudo apt-get remove php5-snmp
+
+installing php on the apache2 server:
+sudo apt-get install apache2 php5 libapache2-mod-php5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

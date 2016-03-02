@@ -1,0 +1,33 @@
+Gode idéer til gennemlæsning af Drupal:
+
+1. Blog om det, evt. blog om alt det jeg har lavet indtil videre,
+med entitierne, modulerne, composer manager, subtheme, forms, blocks, 
+osv. osv. 
+2. Find ud af hvilken del af systemet der giver mest mening at starte med. 
+
+3. måske begynde at tage noter i blokke igen, det fungerede godt engang hvertfald. 
+
+4. Opdel det i sektioner, måske endda i kalenderen
+et foreslag til opdelingen kunne være:
+
+	1. Læs en enkelt klasse.
+	2. Forklar hvad dens formål er, måske prøv at demonstrer dens egenskaber i små standalone 
+		php projekter. 
+	(3. Måske bliver det roddet at tage én klasse afgangen og blogge, så måske 1 
+		område af drupal, og gennemgå hvordan koden hænger sammen. )
+
+
+
+https://www.drupal.org/coding-standards
+
+Getting started with drupal:https://www.drupal.org/node/2384605
+
+
+Drupal advise:
+	
+The way I recommend with Drupal and it's not really Drupal specific: start with the issue tracker. There will be old, unclosed bug reports for sure. Can you reproduce them? If yes, update the ticket confirming it. If no, close it down. You will find this way a ton of ways to use the software and you can begin peeking into the codebase where it crashes. Or you can begin to step through the code and see how it arrives to where it crashes. This way you will not just begin to understand the codebase but also accumulate a ton of karma and your questions will be warmly welcomed by the community.
+
+
+
+Basic structure of drupal 8:
+https://www.drupal.org/node/2427689
