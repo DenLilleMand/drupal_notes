@@ -1,0 +1,31 @@
+Der er  html + css + javascript, som det ikke virker til at vi kommer til at arbejde med overhovedt.
+
+under det lag ligger vores theme modul nemlig, det er et modul som vi bare kan skifte ud og installere noget andet,
+i stedet for. 
+og Det tager sig vel af alt vores javascript/html/css ... 
+
+Under vores theme lag, ligger vores Moduler, og det er blandt andet nogle vi downloader fra drupal.org.
+eller noget som vi selv laver, og installere på hjemmesiden. 
+
+De her moduler, kan så blive kaldt via det vi kalder for en Hook ... (Hook_Menu?) .. 
+den hook er en php function som indeholder alt drupal har brug for at vide omkring vores modul for at kunne bruge det.
+Vores hook_menu bliver kaldt via hjemmesiden når den rammer et url som vores hook intercepter. 
+Flere hooks kan åbenbart blive kaldt på den samme path, så det er vel interessersant hvad der sker der... skal vi lige have testet.
+
+
+Gui mæssigt er det hele bygget op i Nodes,  der er så en page og en story node,
+og der er den forskel at Page nodes ikke har en dato eller author, så det betyder at det er en god node at bruge til 
+Disclaimer eller informations sider, imens Story ville være oplagt at bruge til en artikel eller lignende, pga. den har author + dato.
+
+
+Der er nogle main moduler som bliver brugt ofte, f.eks "the taxonomy module". Som er en måde at lave nye typer Nodes på,
+Nodes har altid den samme basis, men har så bare nogle afvigelser, og det er bla. det som taxonomy hjælper med.
+
+Der er også "the blog module" - som giver mulighed for de forskellige users at se hvor mange artikler de selv har udgivet osv. 
+vha. af http://www.example.com/blog  og så ville en bestemt user så være  http://www.example.com/blog/1   for user 1 -
+og de her urls kan man selvfølgelig ændre vha. 
+
+Der er også noget supporting content som bla. er comments og   blocks/widgets,  comments kender vi jo - brugerne kan kommentere på et post opslag,
+imens blocks/widgets passer godt ind i en sidebar/footer/header - hvor der sker noget dynamisk af en slags, eller der er en liste som skal vises.
+
+Så for at opsumere Nodes står for alt content, og bliver så supported af blocks/widgets og comments. 

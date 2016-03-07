@@ -1,0 +1,71 @@
+Det næste kapitel går igennem et par forskellige moduler,
+vi kommer til at kigge på:
+
+Node (core)
+Allows you to post content and create your own content types
+Nodesne havde 2 typer,  Page og Story, Page er mere statisk indhold som f.eks FAQ og Terms of use.
+imens Story kan være artikler og deslignende.. Men vi kan også configuere nye Nodes med andre attributter.
+
+
+User (core)
+Handles allowing users to log in, as well as Drupal’s robust roles and permissions systems
+
+
+Block (core)
+Adds dynamic sidebars and other supplementary content
+
+
+Menu (core)
+Handles management of a Drupal website’s navigation
+
+Okay- så der er et Menu module,  og det er nok derfor det hedder hook_blabla_Menu agtigt. 
+Navigation
+The main system menu. In practice, this menu is the default “dumping ground” of
+links offered by modules, including administrative tasks.
+
+Primary links
+An empty menu provided for custom navigation needs, typically displayed very
+prominently in the site’s design. Major sections of the site such as “Home” and
+“Blog” tend to be placed in the Primary links menu.
+
+Secondary links
+Another empty menu provided for custom navigation needs, but more subdued in
+presentation. As a general rule, more supplementary pages such as “Terms of Service”
+or “FAQ” are placed in the Secondary links menu.
+
+
+Path (core)
+Allows entry of friendly URLs such as http://www.example.com/about rather than
+http://www.example.com/node/1.
+
+
+
+Administration Menu (http://drupal.org/project/admin_menu)
+Provides a dynamic drop-down navigation menu to speed administrative tasks
+
+
+
+Contact (core)
+A simple form that site visitors may use to send inquiries to website owners
+
+
+
+Blog (core)
+Provides quick and easy multiuser blog functionality
+
+
+Taxonomy (core)
+A powerful classification and categorization system
+
+
+
+Filter (core)
+An important and often misunderstood module that is key to Drupal security
+FCKeditor (http://drupal.org/project/fckeditor)
+A “What You See Is What You Get” (WYSIWYG) editor that allows people without
+HTML knowledge to create rich website content
+
+
+IMCE (http://drupal.org/project/imce)
+An add-on module that can work with editors such as FCKEditor to make it easy
+to add images to website content
