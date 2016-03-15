@@ -65,8 +65,6 @@ sudo apt-get install apache2 php5 libapache2-mod-php5
 We should remember that when running with nginx or apache or whatever, then that webserver will have a php.ini file aswell,
 that is actually the php.ini file we're interested in copy pasteing the [xdebug] thingy into. 
 
-Then remember that we use some chrome plugin for it called xdebug helper, which has to be configured to xdebug aswell. 
-
 
 
 
