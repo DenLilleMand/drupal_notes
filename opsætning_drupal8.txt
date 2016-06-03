@@ -1,5 +1,13 @@
 vim /etc/php5/apache2/php.ini
 
+
+copy over database from sql file:
+
+mysql -umatti -p  <database_name> < dump.sql
+
+
+make sql dump with drush:  drush sql-dump --result-file "okay"
+
 make a section for your custom configurations and paste:
 
  ;regular apache/php debugging options, so it gives more verbose output directly in browser
@@ -25,7 +33,7 @@ maybe run: sudo apt-get update , if it asks for it.
  sudo pecl install xdebug
 
 
-if Error: If the command failed with 'phpize: not found' then you need to install php5-dev packageYou can do it by running 'apt-get install php5-dev' as a root userERROR: `phpize' failed
+if Error: If the command failed with 'phpize: not found' then you need to install php5-dev package. You can do it by running 'apt-get install php5-dev' as a root userERROR: `phpize' failed
 
 we should've fixed that error by installing the php5-dev,but if you do get the error thats because the php5-dev didn't install correctly, could be because you haven't 
 been doing   'sudo apt-get update' when it asked you to. So try that. Try to install the php5-dev again. And then you can eventually run 'sudo pecl install xdebug' again, which will 

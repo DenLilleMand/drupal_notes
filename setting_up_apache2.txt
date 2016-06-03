@@ -1,0 +1,3 @@
+Hvis routerne ikke fungere skal man huske at enable ae2mod(eller sådan noget) som er det modul, der 
+gør rewrite muligt for apache. Den der kommando burde være en man kører ligesom f.eks "sudo service apache2 restart".
+
