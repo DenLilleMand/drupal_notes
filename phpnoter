@@ -1,4 +1,4 @@
-Opgave til mig: lav en API ¨der udstiller et url(?) - 
+Opgave til mig: lav en API der udstiller et url(?) - 
 tager imod noget JSON og laver User objekter ud af det ... og det skal ikke sendes direkte ned i databasen,
 har på fornemmelsen at der bliver lavet en addUser funktion for mig ^^ .
 
@@ -10,7 +10,7 @@ Så enlig skal jeg vel bare lave en php klasse, som tager imod et JSON objekt, og
 You can also use this type of comment directly after a line of code to describe its action,
 like this:
 $x += 10; // Increment $x by 10
-When you need multiple-line comments, there’s a second type of comment, which looks
+When you need multiple-line comments, there's a second type of comment, which looks
 like Example 3-2.
 Example 3-2. A multiline comment
 <?php

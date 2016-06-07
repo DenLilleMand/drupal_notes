@@ -12,12 +12,10 @@ addCustomer(object)
 Lave en funktion der ud laver user objekter ud fra et loop.
 
 
-Virker til at man har det der Array, som fortæller drupal hvad ens side skal gøre,
-som er vores hook.   Den har en url path, når man rammer den så bliver vores  callBackPage rendered, 
-Og det kan blot være en form som vi returnere, men det virker som om at det også kan være alt muligt andet,
-en hel html side med css / javascript osv... så vi kan måske lige kigge på nogle af de andre moduler, måske downloade lidt af hvert.
-
-Kan lige læse kravs specifikationen,.
+Virker til, at man har det der Array, som fortæller drupal hvad ens side skal gøre,
+som er vores hook. 
+Den har en url path, når man rammer den så bliver vores  callBackPage rendered, 
+Og det kan blot være en form som vi returnere, men det virker som om, at det også kan være alt muligt andet, en hel html side med css / javascript osv... så vi kan måske lige kigge på nogle af de andre moduler, måske downloade lidt af hvert.
 
 
 hmm ... så måske når man rammer vores hook, mit module er ligesom indgangen til alle de andre 

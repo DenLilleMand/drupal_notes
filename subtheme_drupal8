@@ -1,7 +1,7 @@
 The plan is to subtheme bootstrap on a drupal 8 installation with drush .
 
-So obviously we need to have drush 8 installed first, i think i got it installed somewhere 
-so i wont go through that...https://www.drupal.org/node/2603018 
+So obviously we need to have drush 8 installed first, I think I got it installed somewhere 
+so I wont go through that...https://www.drupal.org/node/2603018 
 
 
 Drush docs: http://www.drush.org/en/master/   eller bare "drush help"
