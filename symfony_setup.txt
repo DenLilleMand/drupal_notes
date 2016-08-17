@@ -1,0 +1,30 @@
+You have to setup the php.ini file correctly, right now symfony says that it runs of off  /etc/php5/cli/php.ini, 
+but i suspect it to run off of /etc/php5/apache2/php.ini  at some point aswell, so should test out what happens if we dont replicate changes to cli/php.ini in apache2/php.ini
+
+
+installing symfony on mac/linux:
+
+$ sudo curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
+$ sudo chmod a+x /usr/local/bin/symfony
+
+Which will create a global symfony command in the system.
+
+Then /etc/php5/cli/php.ini is required to have a datetime field e.g.
+
+date.timezone = "Europe/Copenhagen"
+
+To create a symfony project you just stand inside of e.g. var/www/html  and write:
+$ sudo symfony new my_project_name 
+
+
+In general the way to check which requirements symfony needs the php runtime to support is to stand inside of the new created project, and then do a:
+
+$ php ./bin/symfony_requirements 
+
+$ sudo chmod 777 my_project_name/var/logs/
+$ sudo chmod 777 my_project_name/var/cache/
+
+$ sudo apt-get install php5-intl
+
+and allways remember to:
+$ sudo service apache2 restart

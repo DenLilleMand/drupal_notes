@@ -1,0 +1,12 @@
+Some of the stuff that helped fix xdebug:
+
+
+1. Path mappings(maybe)
+2. Clear cache(drupal 8)
+3. Use php 5.6 instead of 7
+4. Have to go through the installation of course, so make sure that php -v prints of xdebug, 
+5. print that [xdebug] thing into the apache2/php.ini and cli/php.ini files, not entirely sure why i would 
+    have to do it inside of the cli/php.ini, so maybe dont do that to begin with/ unless the xdebug runtime uses the CLI,
+    which it very well could. (and remember to change the path to the xdebug.so).  the [xdebug] thing im reffering to is also mentioned in 
+    the drupal8 file or some other file in this directory.
+

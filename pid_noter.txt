@@ -1,0 +1,36 @@
+inde under nyheder, skal:
+
+/nyheder
+
+contact/nyhedsbrev
+og
+contact/har_du_en_nyhed
+
+vise den sidepane vi har.
+
+
+
+hjælp:
+
+Hvordan ved du, at du er pårørende: En almindelig content type, men hvor man kan uploade vilkårligt mange pdf filer,
+
+
+dine tunge tanker
+
+fortæl os din historie
+
+offentlige støttemuligheder
+
+pårørendes menneskerettigheder
+
+
+Hvad er mulighederne??
+	-Lave det som en block, og saa paa de sider hvor vi viser blokken skal vi bare ikke vise content, 
+	-lave to separate forms, det er retarderet??
+	-Ingen af disse måder er lette at håndtere. 
+
+
+
+	Okay, skal tage det roligt, hvad er det præcis jeg skal?
+
+	skal lave et modul, der har et blok plugin, dette blok plugin skal bruge en formBuilder af en slags, og gette den contact form vi har brug for. 
