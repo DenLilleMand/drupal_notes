@@ -52,6 +52,8 @@ and then copy the:
  xdebug.remote_host=localhost
  xdebug.remote_port=9000
 
+/usr/lib/php/20151012/xdebug.so
+
 inside of that file aswell. 
 remember: /etc/init.d/apache2 restart
 

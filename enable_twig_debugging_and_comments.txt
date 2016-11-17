@@ -1,0 +1,9 @@
+Enable debugging
+You enable Twig Debugging in sites/default/services.yml.
+(If services.yml does not yet exist; copy default.services.yml and rename it to services.yml.)
+
+Set the debug variable to true.
+
+parameters:
+  twig.config:
+    debug: true
