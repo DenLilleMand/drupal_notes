@@ -7,17 +7,15 @@ som jeg installerede igennem drush.
 og efter man har oprettet en menu, så bliver den tilføjet i blocks, hvor vi har mulighed for at placere den hvor den skal være. 
 
 -Det er relativt let at lave nyt content, med billeder, man kan 
-selv bestemme hvilken række følge.
+selv bestemme hvilken rækkefølge.
 
--Man kan ændre themes, Der er bare nogle af themesne som f.eks
-Omega som kræver en del arbejde, derfor er der også lavet en 30 video lang tutorial med Omega.
+-Man kan ændre themes, Der er bare nogle themes som f.eks
+Omega som kræver en del arbejde, derfor er der også lavet en 30 minutter lang video tutorial med Omega.
 
 -Weight når det går i minus, er højere oppe på listen end items der er 
 nr 1-2-3 osv. 
 
 -relativt let at installere modules/sub-themes igennem drupal, det 
-var en anden ting vi lærte, at man kan bruge drush til at lave subthemes - på ingen tid, og at man SKAL subtheme et theme, fordi ellers raper theme opdatering vores hjemmeside.
+var en anden ting vi lærte, at man kan bruge drush til at lave subthemes - på ingen tid, og at man SKAL subtheme et theme, fordi ellers wraper theme opdatering vores hjemmeside.
 
--Virker til at man kan fjerne alt ved bare at ændre deres 
-værdi inde i blocks til  <None>   eller bestemme hvor specifikke blocks
-skal hen, f.eks kan vi sætte vores navigation block til kun at være på forsiden ved blocks - configure(en bestemt block) -- "show block on specific pages" -- Only the listed pages -- <front>  
+-Virker til at man kan fjerne alt ved bare at ændre deres værdi inde i blocks til  <None>   eller bestemme hvor specifikke blocks skal hen, f.eks kan vi sætte vores navigation block til kun at være på forsiden ved blocks - configure(en bestemt block) -- "show block on specific pages" -- Only the listed pages -- <front>  

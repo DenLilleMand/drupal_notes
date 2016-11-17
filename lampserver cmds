@@ -24,7 +24,7 @@ mhs. til clean url:
 faktisk var det ikke helt det der aktiverede clean url for mig,
 det var nærmere da jeg gik ind i :/etc/apache2/apache2.conf 
 filen, efter at have ændret dens permissions, dvs. sudo gedit apache2.conf - ved ikke helt om man behøver chmod. 
-anyway, jeg har nok åbnent et sikkerheds hul der :) 
+anyway, jeg har nok åbnet et sikkerheds hul der :) 
 jeg ændrede alle override None   til "Override All" ellers kan man google clean url fixes for drupal 7, der er en comment nederst som fixede det for mig. 
 
 

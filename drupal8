@@ -17,12 +17,11 @@ ini_set('display_startup_errors', TRUE);
 ?>
 
 
-Men den letteste maade at enable/disable logging er igennem  interface med configuration->development->Logging and errors. 
+Men den letteste maade at enable/disable logging er igennem interface med configuration->development->Logging and errors. 
 
 Kan evt. undersøge hvad man skal gøre for at slå det til igennem kode. 
 
-Det er forresten totalt awesome at gaa ind i block layout --> demonstrate block regions(<theme>). saa kan man se 
-hvor alle blokene ligger :)
+Det er forresten totalt awesome at gaa ind i block layout --> demonstrate block regions(<theme>). saa kan man se hvor alle blokene ligger :)
 
 For at subtheme  gaar man bare ind i drupal installation og kopiere temaet over i ens egen ./themes mappe, som sådan:
 
